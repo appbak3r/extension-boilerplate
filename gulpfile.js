@@ -1,11 +1,11 @@
-import fs from "fs";
-import gulp from 'gulp';
-import {merge} from 'event-stream'
-import browserify from 'browserify';
-import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
-import preprocessify from 'preprocessify';
-import gulpif from "gulp-if";
+const fs = require('fs');
+const gulp = require('gulp');
+const {merge} = require('event-stream');
+const browserify = require('browserify');
+const source =  require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const preprocessify = require('preprocessify');
+const gulpif = require('gulp-if');
 
 const $ = require('gulp-load-plugins')();
 
@@ -139,7 +139,7 @@ function buildJS(target) {
       entries: 'src/scripts/' + file,
       debug: true
     })
-    .transform('babelify', { presets: ['es2015'] })
+    .transform('babelify')
     .transform(preprocessify, {
       includeExtensions: ['.js'],
       context: context
